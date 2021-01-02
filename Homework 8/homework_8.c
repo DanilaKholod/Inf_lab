@@ -39,57 +39,42 @@ void root(float a, float b, float c) {
     }
 }
 
-void func(int sit, float x1, float x2) {
-    if (sit == 2) {
-        int a, b;
-        float D;
-        for (int i = INT_MIN; i < INT_MAX; i++) {
-            for (int j = INT_MIN; j < INT_MAX; j++) {
-                D = (j - 1)*(j - 1) + 4*i;
-                if (D < 0) {
-                    b = j;
-                    break;
-                }
-            }
-            if (D < 0) {
-                    a = i;
-                    break;
-            }
-        }
+void func(float x1, float x2) {
+    float b, a;
+	b= 1-(x1+x2);
+	a= -x1*x2;
+    if ((x1 == -b) && (x2 == -b)) {
+        printf("3\n");
         printf("a = %d\n", a);
         printf("b = %d\n", b);
     }
-    if (sit == 0) {
-        int a, b;
-        float root1;
-        float root2;
-        for (int i = -1000; i < 1000; i++) {
-            for (int j = -1000; j < 1000; j++) {
-                root1 = (-(j - 1) + sqrt((j - 1)*(j - 1) + 4*i))/2;
-                root2 = (-(j - 1) - sqrt((j - 1)*(j - 1) + 4*i))/2;
-                if (root1 == x1 && root2 == x2) {
-                    b = j;
-                    break;
-                }
-            }
-            if (root1 == x1 && root2 == x2 ) {
-                    a = i;
-                    break;
-            }
-        }
+	else if (x1==x2) {
+		printf("1\n");
+        printf("a = %d\n", a);
+        printf("b = %d\n", b);
+	}
+    else if ((x1 != -b) && (x2 == -b)) {
+        printf("1\n");
         printf("a = %d\n", a);
         printf("b = %d\n", b);
     }
-
-
-
+    else if ((x1 == -b) && (x2 != -b)) {
+        printf("1\n");
+        printf("a = %d\n", a);
+        printf("b = %d\n", b);
+    }
+    else if ((x1 != -b) && (x2 != -b)) {
+		printf("0\n");
+        printf("a = %d\n", a);
+        printf("b = %d\n", b);
+	}
 }
+
 int main()
 {
     float a, b, c; scanf("%f%f%f", &a, &b, &c);
     root(a, b, c);
-    int sit; scanf("%d", &sit);
     float x1, x2; scanf("%f%f", &x1, &x2);
-    func(sit, x1, x2);
+    func(x1, x2);
     return 0;
 }
